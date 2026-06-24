@@ -1,0 +1,21 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "maxdj007-sheldonify",
+  "description": "Sheldonify — organize messy directories into clean folders",
+  "owner": {
+    "name": "maxdj007",
+    "email": "maxi_dj009@yahoo.com"
+  },
+  "plugins": [
+    {
+      "name": "sheldonify",
+      "description": "Organize messy directories into clean folders. Sort by file type, context, date, or custom rules. Detects duplicates, skips protected folders, generates undo scripts. Works standalone or as an AI agent plugin. Never deletes data.",
+      "author": {
+        "name": "maxdj007"
+      },
+      "category": "productivity",
+      "source": ".",
+      "homepage": "https://github.com/maxdj007/sheldonify"
+    }
+  ]
+}
