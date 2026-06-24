@@ -1,0 +1,47 @@
+{
+  "name": "sheldonify",
+  "version": "0.1.0",
+  "description": "CLI tool to organize files and folders by type, context, date, or custom rules",
+  "type": "module",
+  "bin": {
+    "sheldonify": "./bin/sheldonify.js"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "bin/",
+    "dist/",
+    "docs/"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -p tsconfig.json --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "file-organizer",
+    "cli",
+    "file-management",
+    "directory-organizer",
+    "sheldonify"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "minimatch": "^10.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  }
+}
