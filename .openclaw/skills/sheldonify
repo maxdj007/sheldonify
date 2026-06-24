@@ -1,0 +1,83 @@
+# Sheldonify — File & Folder Organizer
+
+Organize messy directories into clean folders. Sort by file type, context, date, or custom rules. Never deletes data.
+
+## Prerequisites
+
+```bash
+npm install -g sheldonify
+```
+
+## Commands
+
+### /sheldonify
+
+Organize files in a directory.
+
+```bash
+# Preview first
+sheldonify <directory> --strategy type --dry-run
+
+# Execute
+sheldonify <directory> --strategy type
+```
+
+**Strategies:**
+- `type` — group by extension (Images/, Documents/, Code/, etc.)
+- `date` — group by modification date (YYYY/MM-Month/)
+- `context` — group by purpose using filename heuristics + LLM
+- `custom` — user-defined rules via config file
+
+**Flags:**
+- `--dry-run` — preview without executing (always use first)
+- `--json` — structured JSON output
+- `--depth <n>` — recursion depth (default: 1)
+- `--config <path>` — path to config file
+
+### /sheldonify-scan
+
+Scan a directory and output file metadata for LLM-assisted classification.
+
+```bash
+sheldonify scan <directory> --json
+```
+
+Read the output, classify uncertain files (those with `heuristicGuess: null` or low confidence), then apply:
+
+```bash
+sheldonify apply <directory> --plan plan.json
+```
+
+Plan format:
+```json
+{
+  "classifications": [
+    { "file": "relative/path.ext", "category": "CategoryName", "reason": "why" }
+  ]
+}
+```
+
+### /sheldonify-undo
+
+Reverse a previous sheldonify run.
+
+```bash
+bash _sheldonify-undo.sh        # Linux/macOS
+.\_sheldonify-undo.ps1          # Windows
+```
+
+Or read `_sheldonify-index.json` for programmatic undo.
+
+## Safety
+
+- Never deletes files — only moves
+- Generates undo scripts (bash + powershell) and JSON index every run
+- Skips protected folders: .git, node_modules, .venv, project roots
+- Detects duplicates by content hash — moves extras to `_duplicates/`
+
+## Workflow
+
+1. Always `--dry-run` first and show the user what will change
+2. Get user confirmation before executing
+3. After execution, mention the undo scripts and index file
+4. For context strategy, use your LLM to classify uncertain files

@@ -1,0 +1,8 @@
+{
+  "name": "sheldonify",
+  "description": "Organize messy directories into clean folders. Sort by file type, context, date, or custom rules. Detects duplicates, skips protected folders, generates undo scripts. Never deletes data.",
+  "author": {
+    "name": "Dhananjay Gupta",
+    "email": "dhananjay.gupta.dj@gmail.com"
+  }
+}

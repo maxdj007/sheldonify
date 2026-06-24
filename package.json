@@ -12,7 +12,18 @@
   "files": [
     "bin/",
     "dist/",
-    "docs/"
+    "docs/",
+    ".claude-plugin/",
+    "skills/",
+    "hooks/",
+    "AGENTS.md",
+    ".github/",
+    ".cursor/",
+    ".windsurf/",
+    ".clinerules",
+    ".kiro/",
+    ".openclaw/",
+    "codex.md"
   ],
   "engines": {
     "node": ">=18"
@@ -32,7 +43,16 @@
     "directory-organizer",
     "sheldonify"
   ],
-  "license": "MIT",
+  "author": "Dhananjay Gupta <dhananjay.gupta.dj@gmail.com>",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxdj007/sheldonify"
+  },
+  "homepage": "https://github.com/maxdj007/sheldonify#readme",
+  "bugs": {
+    "url": "https://github.com/maxdj007/sheldonify/issues"
+  },
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^12.1.0",

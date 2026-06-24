@@ -1,18 +1,102 @@
+```
+
+ ██████╗  █████╗ ███████╗███████╗██╗███╗   ██╗ ██████╗  █████╗ ██╗
+ ██╔══██╗██╔══██╗╚══███╔╝╚══███╔╝██║████╗  ██║██╔════╝ ██╔══██╗██║
+ ██████╔╝███████║  ███╔╝   ███╔╝ ██║██╔██╗ ██║██║  ███╗███████║██║
+ ██╔══██╗██╔══██║ ███╔╝   ███╔╝  ██║██║╚██╗██║██║   ██║██╔══██║╚═╝
+ ██████╔╝██║  ██║███████╗███████╗██║██║ ╚████║╚██████╔╝██║  ██║██╗
+ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═╝
+
+       ⚡ "In a world of messy directories, be the Sheldon." ⚡
+```
+
 # sheldonify
 
 CLI tool to organize messy directories into clean folders. Sort by file type, context, date, or custom rules. Detects duplicates, skips protected folders (.git, node_modules), generates undo scripts. Works standalone or as an AI agent plugin with structured JSON output. Never deletes data — only moves and organizes.
 
 ## Install
 
+### Standalone CLI
+
 ```bash
 npm install -g sheldonify
 ```
 
-Or run directly:
+Or run directly without installing:
 
 ```bash
 npx sheldonify ./Downloads
 ```
+
+### Claude Code
+
+```
+/plugin marketplace add maxdj007/sheldonify
+/plugin install sheldonify@sheldonify
+```
+
+(Send as two separate prompts.) The desktop app has no `/plugin` command — install from the UI: Customize > + by personal plugins > Add from repository > enter `https://github.com/maxdj007/sheldonify`.
+
+Adds `/sheldonify`, `/sheldonify-scan`, and `/sheldonify-undo` skills. A lifecycle hook checks that the CLI is installed and nudges you if it isn't.
+
+### Codex
+
+```bash
+codex plugin marketplace add maxdj007/sheldonify
+codex
+```
+
+Open `/plugins`, select the sheldonify marketplace, and install. Then open `/hooks`, review and trust the lifecycle hook, and start a new thread.
+
+### GitHub Copilot CLI
+
+```
+copilot plugin marketplace add maxdj007/sheldonify
+copilot plugin install sheldonify@sheldonify
+```
+
+Or in an interactive session:
+
+```
+/plugin marketplace add maxdj007/sheldonify
+/plugin install sheldonify@sheldonify
+```
+
+### Gemini CLI / Antigravity CLI
+
+```bash
+gemini extensions install https://github.com/maxdj007/sheldonify
+# or
+agy plugin install https://github.com/maxdj007/sheldonify
+```
+
+### OpenClaw
+
+```bash
+clawhub install sheldonify
+```
+
+Without ClawHub, copy `.openclaw/skills/sheldonify` into `~/.openclaw/skills/`.
+
+### Cursor / Windsurf / Cline / Kiro
+
+Ships with agent-specific rule files. Copy from this repo or clone it:
+
+| Agent | Rule file |
+|-------|-----------|
+| Cursor | `.cursor/rules/sheldonify.md` |
+| Windsurf | `.windsurf/rules/sheldonify.md` |
+| Cline | `.clinerules` |
+| Kiro | `.kiro/steering/sheldonify.md` |
+| GitHub Copilot (editor) | `.github/copilot-instructions.md` |
+
+### CodeWhale
+
+Reads `AGENTS.md` from the project root — zero setup. Clone this repo or copy `AGENTS.md` to your project.
+
+### Any other agent
+
+If your agent has terminal access, just install the CLI globally (`npm i -g sheldonify`) and tell the agent to use it. The `--json` flag gives structured output any agent can parse.
 
 ## Quick Start
 
@@ -171,9 +255,18 @@ When using the `context` strategy, files that match multiple categories with sim
     → Spreadsheets (40%: extension .xlsx suggests Spreadsheets)
 ```
 
-## AI Agent Integration
+## Uninstall
 
-Sheldonify is designed to work as a plugin for AI coding agents (Claude Code, Codex, etc.).
+| Agent | Command |
+|-------|---------|
+| Claude Code | `/plugin remove sheldonify` |
+| Codex | `codex plugin remove sheldonify` |
+| Gemini CLI | `gemini extensions remove sheldonify` |
+| OpenClaw | `clawhub remove sheldonify` |
+| Cursor / Windsurf / Cline / Kiro | Delete the copied rule file |
+| CLI only | `npm uninstall -g sheldonify` |
+
+## Agent Integration Details
 
 ### JSON Output
 
@@ -181,7 +274,7 @@ Sheldonify is designed to work as a plugin for AI coding agents (Claude Code, Co
 sheldonify . --strategy type --dry-run --json
 ```
 
-Returns structured JSON to stdout with plan details, stats, and operations.
+Returns structured JSON to stdout with plan details, stats, and operations. All decorative output goes to stderr, so agents can pipe stdout cleanly.
 
 ### LLM Bridge (Context Strategy)
 
@@ -263,6 +356,22 @@ Place a `sheldonify.config.json` in the target directory or your home directory.
 }
 ```
 
+## Agent Portability
+
+Which files map to which agent:
+
+| File | Agent |
+|------|-------|
+| `.claude-plugin/` + `skills/` + `hooks/` | Claude Code |
+| `AGENTS.md` + `codex.md` + `skills/` + `hooks/` | Codex, VS Code Codex extension |
+| `.openclaw/skills/sheldonify` | OpenClaw |
+| `.github/copilot-instructions.md` | GitHub Copilot CLI, GitHub Copilot (editor) |
+| `AGENTS.md` | CodeWhale |
+| `.cursor/rules/sheldonify.md` | Cursor |
+| `.windsurf/rules/sheldonify.md` | Windsurf |
+| `.clinerules` | Cline |
+| `.kiro/steering/sheldonify.md` | Kiro |
+
 ## Requirements
 
 - Node.js >= 18
@@ -271,3 +380,9 @@ Place a `sheldonify.config.json` in the target directory or your home directory.
 ## License
 
 Apache 2.0 — see [LICENSE](LICENSE)
+
+---
+
+```
+    🖖 Live long and prosper — and keep your directories organized.
+```
