@@ -55,6 +55,7 @@ export interface FileEntry {
   hash?: string;
   isDirectory: boolean;
   media?: MediaMetadata;
+  dominantExtension?: string;
 }
 
 export interface MediaMetadata {

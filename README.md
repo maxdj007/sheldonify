@@ -32,7 +32,7 @@ npx sheldonify ./Downloads
 
 ```
 /plugin marketplace add maxdj007/sheldonify
-/plugin install sheldonify@sheldonify
+/plugin install sheldonify@maxdj007-sheldonify
 ```
 
 (Send as two separate prompts.) The desktop app has no `/plugin` command — install from the UI: Customize > + by personal plugins > Add from repository > enter `https://github.com/maxdj007/sheldonify`.
@@ -59,7 +59,7 @@ Or in an interactive session:
 
 ```
 /plugin marketplace add maxdj007/sheldonify
-/plugin install sheldonify@sheldonify
+/plugin install sheldonify@maxdj007-sheldonify
 ```
 
 ### Gemini CLI / Antigravity CLI

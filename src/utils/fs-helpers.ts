@@ -11,8 +11,14 @@ export async function safeMove(source: string, destination: string): Promise<voi
     await fs.rename(source, destination);
   } catch (err: unknown) {
     if (isNodeError(err) && err.code === 'EXDEV') {
-      await fs.copyFile(source, destination);
-      await fs.unlink(source);
+      const stat = await fs.stat(source);
+      if (stat.isDirectory()) {
+        await fs.cp(source, destination, { recursive: true });
+        await fs.rm(source, { recursive: true, force: true });
+      } else {
+        await fs.copyFile(source, destination);
+        await fs.unlink(source);
+      }
     } else {
       throw err;
     }
