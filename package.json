@@ -1,6 +1,6 @@
 {
   "name": "sheldonify",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "CLI tool to organize files and folders by type, context, date, or custom rules",
   "type": "module",
   "bin": {
